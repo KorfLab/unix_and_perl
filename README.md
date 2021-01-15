@@ -7,4 +7,4 @@ Perl has fallen out of favor among biologists. Most people are now using Python.
 
 If you want all of the course materials, including the data, download the zip file. Otherwise, we recommend HTML or PDF (unless you like reading Markdown).
 
-This repos also has a Command-line Linux Bootcamp by Keith Bradnam (former member of the lab).
+This repo also has a Command-line Linux Bootcamp by Keith Bradnam (former member of the lab).
