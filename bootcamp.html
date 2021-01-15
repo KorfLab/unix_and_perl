@@ -1,0 +1,688 @@
+<!DOCTYPE html>  
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>Command-line Bootcamp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style id="mkstylesheet">
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:0.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace, monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}*{box-sizing:border-box}input,select,textarea,button{font:13px/1.4 Helvetica,arial,nimbussansl,liberationsans,freesans,clean,sans-serif,"Segoe UI Emoji","Segoe UI Symbol"}body{font:13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";color:#333;background-color:#fff}a{color:#4078c0;text-decoration:none}a:hover,a:active{text-decoration:underline}hr,.rule{height:0;margin:15px 0;overflow:hidden;background:transparent;border:0;border-bottom:1px solid #ddd}hr:before,.rule:before{display:table;content:""}hr:after,.rule:after{display:table;clear:both;content:""}h1,h2,h3,h4,h5,h6{margin-top:15px;margin-bottom:15px;line-height:1.1}h1{font-size:30px}h2{font-size:21px}h3{font-size:16px}h4{font-size:14px}h5{font-size:12px}h6{font-size:11px}small{font-size:90%}blockquote{margin:0}ul,ol{padding:0;margin-top:0;margin-bottom:0}ol ol,ul ol{list-style-type:lower-roman}ul ul ol,ul ol ol,ol ul ol,ol ol ol{list-style-type:lower-alpha}dd{margin-left:0}tt,code{font-family:Consolas, "Liberation Mono", Menlo, Courier, monospace;font-size:12px}pre{margin-top:0;margin-bottom:0;font:12px Consolas,"Liberation Mono",Menlo,Courier,monospace}html,body{color:black}#wrapper{font:16px helvetica,arial,freesans,clean,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6;padding:3px;background:#fff;border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px;border:solid 1px #dddddd !important;color:#333}p{margin:1em 0}a{color:#4183c4;text-decoration:none}#wrapper{background-color:#fff;padding:30px;margin:15px;font-size:16px;line-height:1.6}#wrapper>*:first-child{margin-top:0 !important}#wrapper>*:last-child{margin-bottom:0 !important}@media screen{#wrapper{border:solid 1px #ddd}}h1,h2,h3,h4,h5,h6{position:relative;margin-top:1em;margin-bottom:16px;font-weight:700;line-height:1.4;color:#333}h1{padding-bottom:.3em;font-size:2.25em;line-height:1.2;border-bottom:1px solid #eee}h2{padding-bottom:0.3em;font-size:1.75em;line-height:1.225;border-bottom:1px solid #eee}h3{font-size:1.5em;line-height:1.43}h4{font-size:1.25em}h5{font-size:1em}h6{color:#777;font-size:1em}p,blockquote,ul,ol,dl,table,pre{margin-top:0;margin-bottom:16px}hr{height:4px;padding:0;margin:16px 0;background-color:#e7e7e7;border:0 none}ul,ol{padding-left:2em}ul.no-list,ol.no-list{padding:0;list-style-type:none}ul ul,ul ol{margin-top:0;margin-bottom:0}ol ol,ol ul{margin-top:0;margin-bottom:0}li>p{margin-top:16px}dl{padding:0}dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}dl dd{padding:0 16px;margin-bottom:16px}blockquote{padding:0 15px;margin-left:0;color:#777;border-left:4px solid #ddd}blockquote>:first-child{margin-top:0}blockquote>:last-child{margin-bottom:0}table{display:block;width:100%;overflow:auto}table th{font-weight:700;padding:6px 13px;border:1px solid #ddd}table td{padding:6px 13px;border:1px solid #ddd}table tr{background-color:#fff;border-top:1px solid #ccc}table tr:nth-child(2n){background-color:#f8f8f8}img{max-width:100%;-moz-box-sizing:border-box;box-sizing:border-box}span.frame{display:block;overflow:hidden}span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid #ddd}span.frame span img{display:block;float:left}span.frame span span{display:block;padding:5px 0 0;clear:both;color:#333}span.align-center{display:block;overflow:hidden;clear:both}span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}span.align-center span img{margin:0 auto;text-align:center}span.align-right{display:block;overflow:hidden;clear:both}span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}span.align-right span img{margin:0;text-align:right}span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}span.float-left span{margin:13px 0 0}span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}code,tt{padding:0;padding-top:.2em;padding-bottom:.2em;margin:0;font-size:85%;background-color:rgba(0,0,0,0.04);border-radius:3px}code:before,code:after{letter-spacing:-.2em;content:"\00a0"}tt:before,tt:after{letter-spacing:-.2em;content:"\00a0"}code br,tt br{display:none}del code{text-decoration:inherit;vertical-align:text-top}pre>code{padding:0;margin:0;font-size:100%;white-space:pre;background:transparent;border:0}.highlight{margin-bottom:16px}.highlight pre{padding:16px;margin-bottom:0;overflow:auto;font-size:85%;line-height:1.45;background-color:#f7f7f7;border-radius:3px}pre{padding:16px;margin-bottom:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f7f7f7;border-radius:3px;word-wrap:normal}pre code,pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}pre code:before,pre code:after{content:normal}pre tt:before,pre tt:after{content:normal}.poetry pre{font-family:Georgia, Garamond, serif !important;font-style:italic;font-size:110% !important;line-height:1.6em;display:block;margin-left:1em}.poetry pre code{font-family:Georgia, Garamond, serif !important;word-break:break-all;word-break:break-word;-webkit-hyphens:auto;-moz-hyphens:auto;hyphens:auto;white-space:pre-wrap}sup,sub,a.footnote{font-size:1.4ex;height:0;line-height:1;vertical-align:super;position:relative}sub{vertical-align:sub;top:-1px}@media print{body{background:#fff}img,table,figure{page-break-inside:avoid}#wrapper{background:#fff;border:none !important;font-size:12px}pre code{overflow:visible}}@media screen{body.inverted{color:#eee !important;border-color:#555;box-shadow:none}.inverted #wrapper,.inverted hr,.inverted p,.inverted td,.inverted li,.inverted h1,.inverted h2,.inverted h3,.inverted h4,.inverted h5,.inverted h6,.inverted th,.inverted .math,.inverted caption,.inverted dd,.inverted dt,.inverted blockquote{color:#eee !important;border-color:#555;box-shadow:none}.inverted td,.inverted th{background:#333}.inverted pre,.inverted code,.inverted tt{background:#eeeeee !important;color:#111}.inverted h2{border-color:#555555}.inverted hr{border-color:#777;border-width:1px !important}::selection{background:rgba(157,193,200,0.5)}h1::selection{background-color:rgba(45,156,208,0.3)}h2::selection{background-color:rgba(90,182,224,0.3)}h3::selection,h4::selection,h5::selection,h6::selection,li::selection,ol::selection{background-color:rgba(133,201,232,0.3)}code::selection{background-color:rgba(0,0,0,0.7);color:#eeeeee}code span::selection{background-color:rgba(0,0,0,0.7) !important;color:#eeeeee !important}a::selection{background-color:rgba(255,230,102,0.2)}.inverted a::selection{background-color:rgba(255,230,102,0.6)}td::selection,th::selection,caption::selection{background-color:rgba(180,237,95,0.5)}.inverted{background:#0b2531;background:#252a2a}.inverted #wrapper{background:#252a2a}.inverted a{color:#acd1d5}}.highlight{background:#fff}.highlight .c{color:#998;font-style:italic}.highlight .err{color:#a61717;background-color:#e3d2d2}.highlight .k,.highlight .o{font-weight:700}.highlight .cm{color:#998;font-style:italic}.highlight .cp{color:#999;font-weight:700}.highlight .c1{color:#998;font-style:italic}.highlight .cs{color:#999;font-weight:700;font-style:italic}.highlight .gd{color:#000;background-color:#fdd}.highlight .gd .x{color:#000;background-color:#faa}.highlight .ge{font-style:italic}.highlight .gr{color:#a00}.highlight .gh{color:#999}.highlight .gi{color:#000;background-color:#dfd}.highlight .gi .x{color:#000;background-color:#afa}.highlight .go{color:#888}.highlight .gp{color:#555}.highlight .gs{font-weight:700}.highlight .gu{color:purple;font-weight:700}.highlight .gt{color:#a00}.highlight .kc,.highlight .kd,.highlight .kn,.highlight .kp,.highlight .kr{font-weight:700}.highlight .kt{color:#458;font-weight:700}.highlight .m{color:#099}.highlight .s{color:#d14}.highlight .n{color:#333}.highlight .na{color:teal}.highlight .nb{color:#0086b3}.highlight .nc{color:#458;font-weight:700}.highlight .no{color:teal}.highlight .ni{color:purple}.highlight .ne,.highlight .nf{color:#900;font-weight:700}.highlight .nn{color:#555}.highlight .nt{color:navy}.highlight .nv{color:teal}.highlight .ow{font-weight:700}.highlight .w{color:#bbb}.highlight .mf,.highlight .mh,.highlight .mi,.highlight .mo{color:#099}.highlight .sb,.highlight .sc,.highlight .sd,.highlight .s2,.highlight .se,.highlight .sh,.highlight .si,.highlight .sx{color:#d14}.highlight .sr{color:#009926}.highlight .s1{color:#d14}.highlight .ss{color:#990073}.highlight .bp{color:#999}.highlight .vc,.highlight .vg,.highlight .vi{color:teal}.highlight .il{color:#099}.highlight .gc{color:#999;background-color:#EAF2F5}.type-csharp .highlight .k,.type-csharp .highlight .kt{color:blue}.type-csharp .highlight .nf{color:#000;font-weight:400}.type-csharp .highlight .nc{color:#2b91af}.type-csharp .highlight .nn{color:#000}.type-csharp .highlight .s,.type-csharp .highlight .sc{color:#a31515}.type-csharp .highlight .k,.type-csharp .highlight .kt{color:#00F}.type-csharp .highlight .nf{color:#000;font-weight:normal}.type-csharp .highlight .nc{color:#2B91AF}.type-csharp .highlight .nn{color:#000}.type-csharp .highlight .s,.type-csharp .highlight .sc{color:#A31515}body.dark #wrapper{background:transparent !important;box-shadow:none !important}
+#mkreplaced-toc{list-style-position:inside;padding:0;margin:0 0 0 1rem;list-style-type:none}#mkreplaced-toc li::before{content:''}#mkreplaced-toc li{font-size:1.5rem;line-height:1.5;font-weight:normal}#mkreplaced-toc li ul{font-size:1.3rem;font-weight:300;padding:.5rem 0;margin:0 0 0 1rem}#mkreplaced-toc li.missing{list-style-type:none !important}#mkreplaced-toc.max-1 ul,#mkreplaced-toc.max1 ul{display:none}#mkreplaced-toc.max-2 ul ul,#mkreplaced-toc.max2 ul ul{display:none}#mkreplaced-toc.max-3 ul ul ul,#mkreplaced-toc.max3 ul ul ul{display:none}#mkreplaced-toc.max-4 ul ul ul ul,#mkreplaced-toc.max4 ul ul ul ul{display:none}#mkreplaced-toc.max-5 ul ul ul ul ul,#mkreplaced-toc.max5 ul ul ul ul ul{display:none}
+#wrapper #generated-toc-clone, #wrapper #mkreplaced-toc, #wrapper #generated-toc-clone ul, #wrapper #mkreplaced-toc ul {
+    list-style-position: inside;
+}
+#wrapper #generated-toc-clone li.missing, #wrapper #mkreplaced-toc li.missing {
+    list-style-type: none!important;
+}
+#wrapper #generated-toc-clone, #wrapper #mkreplaced-toc {
+    list-style-type: upper-roman;
+}
+#wrapper #generated-toc-clone>li>ul, #wrapper #mkreplaced-toc>li>ul  {
+    list-style-type: decimal;
+}
+#wrapper #generated-toc-clone>li>ul>li>ul, #wrapper #mkreplaced-toc>li>ul>li>ul {
+    list-style-type: decimal-leading-zero;
+}
+#wrapper #generated-toc-clone>li>ul>li>ul>li>ul, #wrapper #mkreplaced-toc>li>ul>li>ul>li>ul {
+    list-style-type: lower-greek;
+}
+#wrapper #generated-toc-clone>li>ul>li>ul>li>ul>li>ul, #wrapper #mkreplaced-toc>li>ul>li>ul>li>ul>li>ul {
+    list-style-type: disc;
+}
+#wrapper #generated-toc-clone>li>ul>li>ul>li>ul>li>ul>li>ul, #wrapper #mkreplaced-toc>li>ul>li>ul>li>ul>li>ul>li>ul {
+    list-style-type: square;
+}
+#wrapper #generated-toc-clone,#wrapper #mkreplaced-toc{list-style-position:outside!important;margin-left:2rem;}
+</style>
+
+<style id="mkprintstyles">@media print{#wrapper #generated-toc-clone,#generated-toc{display:none!important;}hr{border:none!important;page-break-after:always!important;background:none!important;}h1:nth-of-type(n+2){page-break-before:always;}
+html,body,#wrapper{font-size:10pt!important;}
+}
+</style>
+
+
+</head>
+<body class="normal">
+  <div id="wrapper">
+      <h1 id="command-linebootcamp">Command-line Bootcamp</h1>
+
+<h3 id="keithbradnam">Keith Bradnam</h3>
+
+<h3 id="ucdavisgenomecenter">UC Davis Genome Center</h3>
+
+<h3 id="version1.02---2015-12-03">Version 1.02 &#8212; 2015&#8211;12&#8211;03</h3>
+
+<p><br><br><br></p>
+
+<blockquote>
+<p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. Please send feedback, questions, money, or abuse to <a href="mailto:keith@bradnam.co">keith@bradnam.co</a> </p>
+</blockquote>
+
+<hr />
+
+<h2 id="introduction">Introduction</h2>
+
+<p>This &#8216;bootcamp&#8217; is intended to provide the reader with a basic overview of essential Unix/Linux commands that will allow them to navigate a file system and move, copy, edit files. It will also introduce a brief overview of some &#8216;power&#8217; commands in Unix. It was orginally developed as part of a <a href="http://bioinformatics.ucdavis.edu">Bioinformatics Core</a> Workshop taught at UC Davis (<a href="http://training.bioinformatics.ucdavis.edu/docs/2015/06/june-2015-workshop/index.html">Using the Linux Command-Line for Analysis of High Throughput Sequence Data</a>).</p>
+
+<h2 id="whyunix">Why Unix?</h2>
+
+<p>The <a href="http://en.wikipedia.org/wiki/Unix">Unix operating system</a> has been around since 1969. Back then there was no such thing as a graphical user interface. You typed everything. It may seem archaic to use a keyboard to issue commands today, but it&#8217;s much easier to automate keyboard tasks than mouse tasks. There are several variants of Unix (including <a href="http://en.wikipedia.org/wiki/Linux">Linux</a>), though the differences do not matter much for most basic functions.</p>
+
+<p>Increasingly, the raw output of biological research exists as <em>in silico</em> data, usually in the form of large text files. Unix is particularly suited to working with such files and has several powerful (and flexible) commands that can process your data for you. The real strength of learning Unix is that most of these commands can be combined in an almost unlimited fashion. So if you can learn just five Unix commands, you will be able to do a lot more than just five things.</p>
+
+<h2 id="typeset">Typeset Conventions</h2>
+
+<p>Command-line examples that you are meant to type into a terminal window will be shown indented in a constant-width font, e.g. </p>
+
+<pre><code>ls -lrh
+</code></pre>
+
+<p>Sometimes the accompanying text will include a reference to a Unix command. Any such text will also be in a constant-width, boxed font. E.g.</p>
+
+<blockquote>
+<p>Type the <code>pwd</code> command again.</p>
+</blockquote>
+
+<p>From time to time this documentation will contain <a href="http://en.wikipedia.org/wiki/Hyperlink">web links</a> to pages that will help you find out more about certain Unix commands. Usually, the <em>first</em> mention of a command or function will be a hyperlink to Wikipedia. Important or critical points will be styled like so:</p>
+
+<blockquote>
+<p><strong><em>This is an important point!</em></strong></p>
+</blockquote>
+
+<hr />
+
+<h2 id="assumptions">Assumptions</h2>
+
+<p>The lessons from this point onwards will assume very little apart from the following:</p>
+
+<ol>
+<li>You have access to a Unix/Linux system</li>
+<li>You know how to launch a terminal program on that system</li>
+<li>You have a home directory where you can create/edit new files</li>
+</ol>
+
+<p>In the following documentation, we will also assume that the logged in user has a username &#8216;ubuntu&#8217; and the home directory is located at <code>/home/ubuntu</code>.</p>
+
+<hr />
+
+<h2 id="u1">1. The Terminal</h2>
+
+<p>A <em>terminal</em> is the common name for the program that does two main things. It allows you to type input to the computer (i.e. run programs, move/view files etc.) and it allows you to see output from those programs. All Unix machines will have a terminal program available.</p>
+
+<p>Open the terminal application. You should now see something that looks like the following:</p>
+
+<figure>
+<img src="http://korflab.ucdavis.edu/Unix_and_Perl/terminal2.png" alt="Terminal application" id="terminalapplication" />
+<figcaption>Terminal application</figcaption>
+</figure>
+
+<p>There will be many situations where it will be useful to have multiple terminals open and it will be a matter of preference as to whether you want to have multiple windows, or one window with multiple tabs (there are typically keyboard shortcuts for switching between windows, or moving between tabs). </p>
+
+<hr />
+
+<h2 id="u2">2. Your first Unix command</h2>
+
+<p>It&#8217;s important to note that you will always be <em>inside</em> a single directory when using the terminal. The default behavior is that when you open a new terminal you start in your own <em>home</em> directory (containing files and directories that only you can modify). To see what files and directories are in our home directory, we need to use the <a href="http://en.wikipedia.org/wiki/Ls">ls</a> command. This command lists the contents of a directory. If we run the <code>ls</code> command we should see something like:</p>
+<pre><code class="bash">ubuntu@:~$ ls
+command_line_course  linux_bootcamp
+ubuntu@:~$</code></pre>
+
+<p>There are four things that you should note here:</p>
+
+<ol>
+<li>You will probably see different output to what is shown here, it depends on your computer setup. Don&#8217;t worry about that for now.</li>
+<li>The <code>ubuntu@:~$</code> text that you see is the Unix <a href="http://en.wikipedia.org/wiki/Command_line_interface">command prompt</a>. In this case, it contains a user name (&#8216;ubuntu&#8217;) and the name of the current directory (&#8216;~&#8217;, more on that later). Note that the command prompt might not look the same on different Unix systems. In this case, the <code>$</code> sign marks the end of the prompt.</li>
+<li>The output of the <code>ls</code> command lists two things. In this case, they are both directories, but they could also be files. We&#8217;ll learn how to tell them apart later on. These directories were created as part of a specific course that used this bootcamp material. You will therefore probably see something very different on your own computer.</li>
+<li>After the <code>ls</code> command finishes it produces a new command prompt, ready for you to type your next command.</li>
+</ol>
+
+<p>The <code>ls</code> command is used to list the contents of <em>any</em> directory, not necessarily the one that you are currently in. Try the following:</p>
+<pre><code class="bash">ubuntu@:~$ ls /data
+bioinfo.course.data  command_line_course  galaxy  lost+found  refs
+
+ubuntu@:~$ ls /etc/perl
+CPAN  Net  XML</code></pre>
+
+<hr />
+
+<h2 id="u3">3: The Unix tree</h2>
+
+<p>Looking at directories from within a Unix terminal can often seem confusing. But bear in mind that these directories are exactly the same type of folders that you can see if you use any graphical file browser. From the <em>root</em> level (<code>/</code>) there are usually a dozen or so directories. You can treat the root directory like any other, e.g. you can list its contents:</p>
+<pre><code class="bash">ubuntu@:~$ ls /
+bin   dev   initrd.img      lib64       mnt   root  software  tmp  vmlinuz
+boot  etc   initrd.img.old  lost+found  opt   run   srv       usr  vmlinuz.old
+data  home  lib             media       proc  sbin  sys       var</code></pre>
+
+<p>You might notice some of these names appearing in different colors. Many Unix systems will display files and directories differently by default. Other colors may be used for special types of files. When you log in to a computer you are working with your files in your home directory, and this is often inside a directory called &#8216;users&#8217; or &#8216;home&#8217;.</p>
+
+<hr />
+
+<h2 id="u4">4: Finding out where you are</h2>
+
+<p>There may be many hundreds of directories on any Unix machine, so how do you know which one you are in? The command <a href="http://en.wikipedia.org/wiki/Pwd">pwd</a> will Print the <a href="http://en.wikipedia.org/wiki/Working_directory">Working Directory</a> and that&#8217;s pretty much all this command does:</p>
+<pre><code class="bash">ubuntu@:~$ pwd
+/home/ubuntu</code></pre>
+
+<p>When you log in to a Unix computer, you are typically placed into your <em>home</em> directory. In this example, after we log in, we are placed in a directory called &#8216;ubuntu&#8217; which itself is a <em>subdirectory</em> of another directory called &#8216;home&#8217;. Conversely, &#8216;users&#8217; is the <em>parent</em> directory of &#8216;clmuser&#8217;. The first forward slash that appears in a list of directory names always refers to the top level directory of the file system (known as the <a href="http://en.wikipedia.org/wiki/Root_directory">root directory</a>). The remaining forward slash (between &#8216;home&#8217; and &#8216;ubuntu&#8217;) delimits the various parts of the directory hierarchy. If you ever get &#8216;lost&#8217; in Unix, remember the <code>pwd</code> command.</p>
+
+<p>As you learn Unix you will frequently type commands that don&#8217;t seem to work. Most of the time this will be because you are in the wrong directory, so it&#8217;s a really good habit to get used to running the <code>pwd</code> command a lot.</p>
+
+<hr />
+
+<h2 id="u5">5: Making new directories</h2>
+
+<p>If we want to make a new directory (e.g. to store some work related data), we can use the <a href="http://en.wikipedia.org/wiki/Tilde#Directories_and_URLs">mkdir</a> command:</p>
+<pre><code class="bash">ubuntu@:~$ mkdir Learning_unix
+ubuntu@:~$ ls
+command_line_course  Learning_unix  linux_bootcamp</code></pre>
+
+<hr />
+
+<h2 id="u6">6: Getting from &#8216;A&#8217; to &#8216;B&#8217;</h2>
+
+<p>We are in the home directory on the computer but we want to to work in the new <code>Learning_unix</code> directory. To change directories in Unix, we use the <a href="http://en.wikipedia.org/wiki/Cd_(command)">cd</a> command:</p>
+<pre><code class="bash">cd Learning_unix
+ubuntu@:~/Learning_unix$</code></pre>
+
+<p>Notice that — on this system — the command prompt has expanded to include our current directory. This doesn&#8217;t happen by default on all Unix systems, but you should know that you can configure what information appears as part of the command prompt.</p>
+
+<p>Let&#8217;s make two new subdirectories and navigate into them:</p>
+<pre><code class="bash">ubuntu@:~/Learning_unix$ mkdir Outer_directory
+ubuntu@:~/Learning_unix$ cd Outer_directory
+ubuntu@:~/Learning_unix/Outer_directory$
+
+ubuntu@:~/Learning_unix/Outer_directory$ mkdir Inner_directory
+ubuntu@:~/Learning_unix/Outer_directory$ cd Inner_directory/
+ubuntu@:~/Learning_unix/Outer_directory/Inner_directory$</code></pre>
+
+<p>Now our command prompt is getting quite long, but it reveals that we are three levels beneath the home directory. We created the two directories in separate steps, but it is possible to use the <code>mkdir</code> command in way to do this all in one step. </p>
+
+<p>Like most Unix commands, <code>mkdir</code> supports <em>command-line options</em> which let you alter its behavior and functionality. Command-like options are — as the name suggests — optional arguments that are placed after the command name. They often take the form of single letters (following a dash). If we had used the <code>-p</code> option of the <code>mkdir</code> command we could have done this in one step. E.g.</p>
+<pre><code class="bash">mkdir -p Outer_directory/Inner_directory</code></pre>
+
+<p><strong><em>Note the spaces either side the <code>-p</code>!</em></strong></p>
+
+<hr />
+
+<h2 id="u7">7: The root directory</h2>
+
+<p>Let&#8217;s change directory to the root directory, and then into our home directory</p>
+<pre><code class="bash">ubuntu@:~/Learning_unix/Outer_directory/Inner_directory$ cd /
+ubuntu@:/$ cd home
+ubuntu@:/home$ cd ubuntu
+ubuntu@:~$</code></pre>
+
+<p>In this case, we may as well have just changed directory in one go:</p>
+<pre><code class="bash">cd /home/ubuntu/</code></pre>
+
+<p>The leading <code>/</code> is incredibly important. The following two commands are very different:</p>
+<pre><code class="bash">cd /home/ubuntu/
+cd home/ubuntu/</code></pre>
+
+<p>The first command says go the <code>unbuntu</code> directory that is beneath the <code>home</code> directory that is at the top level (the root) of the file system. There can only be one <code>/home/ubuntu</code> directory on any Unix system. </p>
+
+<p>The second command says go to the <code>unbuntu</code> directory that is beneath the <code>home</code> directory that is located wherever I am right now. There can potentially be many <code>home/ubuntu</code> directories on a Unix system (though this is unlikely).</p>
+
+<p>Learn and understand the difference between these two commands.</p>
+
+<hr />
+
+<h2 id="u8">8: Navigating upwards in the Unix filesystem</h2>
+
+<p>Frequently, you will find that you want to go &#8216;upwards&#8217; one level in the directory hierarchy. Two dots <code>..</code> are used in Unix to refer to the <em>parent</em> directory of wherever you are. Every directory has a parent except the root level of the computer. Let&#8217;s go into the <code>Learning_unix</code> directory and then navigate up two levels:</p>
+<pre><code class="bash">ubuntu@:~$ cd Learning_unix/
+ubuntu@:~/Learning_unix$ cd ..
+ubuntu@:~$ cd ..
+ubuntu@:/home$</code></pre>
+
+<p>What if you wanted to navigate up <em>two</em> levels in the file system in one go? It&#8217;s very simple, just use two sets of the <code>..</code> operator, separated by a forward slash:</p>
+<pre><code class="bash">cd ../..</code></pre>
+
+<hr />
+
+<h2 id="9:absoluteandrelativepaths">9: Absolute and relative paths</h2>
+
+<p>Using <code>cd ..</code> allows us to change directory <em>relative</em> to where we are now. You can also always change to a directory based on its <em>absolute</em> location. E.g. if you are working in the <code>/home/ubuntu/Learning_unix</code> directory and you then want to change to the <code>/tmp</code> directory, then you could do either of the following:</p>
+
+<pre><code>$ cd ../../../tmp
+</code></pre>
+
+<p>or&#8230;</p>
+
+<pre><code>$ cd /tmp
+</code></pre>
+
+<p>They both achieve the same thing, but the 2nd example requires that you know about the full <em>path</em> from the root level of the computer to your directory of interest (the &#8216;path&#8217; is an important concept in Unix). Sometimes it is quicker to change directories using the relative path, and other times it will be quicker to use the absolute path.</p>
+
+<hr />
+
+<h2 id="u10">10: Finding your way back home</h2>
+
+<p>Remember that the command prompt shows you the name of the directory that you are currently in, and that when you are in your home directory it shows you a tilde character (`~``) instead? This is because Unix uses the tilde character as a short-hand way of <a href="http://en.wikipedia.org/wiki/Tilde#Directories_and_URLs">specifying a home directory</a>.</p>
+
+<p>See what happens when you try the following commands (use the <code>pwd</code> command after each one to confirm the results if necessary):</p>
+<pre><code class="bash">cd / 
+cd ~ 
+cd</code></pre>
+
+<p>Hopefully, you should find that <code>cd</code> and <code>cd ~</code> do the same thing, i.e. they take you back to your home directory (from wherever you were). You will frequently want to jump straight back to your home directory, and typing <code>cd</code> is a very quick way to get there.</p>
+
+<p>You can also use the <code>~</code> as a quick way of navigating into subdirectories of your home directory when your current directory is somewhere else. I.e. the quickest way of navigating from the root directory to your <code>Learning_unix</code> directory is as follows:</p>
+<pre><code class="bash">ubuntu@:~$ cd /
+ubuntu@:/$ cd ~/Learning_unix</code></pre>
+
+<hr />
+
+<h2 id="u11">11: Making the <code>ls</code> command more useful</h2>
+
+<p>The <code>..</code> operator that we saw earlier can also be used with the <code>ls</code> command, e.g. you can list directories that are &#8216;above&#8217; you:</p>
+<pre><code class="bash">ubuntu@:~/Learning_unix$ cd ~/Learning_unix/Outer_directory/
+ubuntu@:~/Learning_unix/Outer_directory$ ls ../../
+command_line_course  Learning_unix  linux_bootcamp</code></pre>
+
+<p>Time to learn another useful command-line option. If you add the letter &#8216;l&#8217; to the <code>ls</code> command it will give you a longer output compared to the default:</p>
+<pre><code class="bash">ubuntu@:~/Learning_unix$ ls -l /home
+total 12
+drwxr-xr-x 8 galaxy galaxy 4096 Apr  2 22:47 galaxy
+drwxr-xr-x 3 root   root   4096 Mar 16 23:06 nate
+drwxr-xr-x 9 ubuntu ubuntu 4096 Jun 15 02:07 ubuntu</code></pre>
+
+<p>For each file or directory we now see more information (including file ownership and modification times). The &#8216;d&#8217; at the start of each line indicates that these are directories. There are many, many different options for the <code>ls</code> command. Try out the following (against any directory of your choice) to see how the output changes.</p>
+<pre><code class="bash">ls -l 
+ls -R 
+ls -l -t -r 
+ls -lh</code></pre>
+
+<p>Note that the last example combine multiple options but only use one dash. This is a very common way of specifying multiple command-line options. You may be wondering what some of these options are doing. It&#8217;s time to learn about Unix documentation&#8230;.</p>
+
+<hr />
+
+<h2 id="u12">12: Man pages</h2>
+
+<p>If every Unix command has so many options, you might be wondering how you find out what they are and what they do. Well, thankfully every Unix command has an associated &#8216;manual&#8217; that you can access by using the <code>man</code> command. E.g.</p>
+<pre><code class="bash">man ls 
+man cd
+man man # yes even the man command has a manual page</code></pre>
+
+<p>When you are using the man command, press <code>space</code> to scroll down a page, <code>b</code> to go back a page, or <code>q</code> to quit. You can also use the up and down arrows to scroll a line at a time. The man command is actually using another Unix program, a text viewer called <code>less</code>, which we&#8217;ll come to later on.</p>
+
+<hr />
+
+<h2 id="u13">13: Removing directories</h2>
+
+<p>We now have a few (empty) directories that we should remove. To do this use the <a href="http://en.wikipedia.org/wiki/Rmdir">rmdir</a> command, this will only remove empty directories so it is quite safe to use. If you want to know more about this command (or any Unix command), then remember that you can just look at its man page.</p>
+<pre><code class="bash">ubuntu@:~$ cd ~/Learning_unix/Outer_directory/
+ubuntu@:~/Learning_unix/Outer_directory$ rmdir Inner_directory/
+ubuntu@:~/Learning_unix/Outer_directory$ cd ..
+ubuntu@:~/Learning_unix$ rmdir Outer_directory/
+ubuntu@:~/Learning_unix$ ls
+ubuntu@:~/Learning_unix$</code></pre>
+
+<p><strong>* Note, you have to be outside a directory before you can remove it with <code>rmdir</code> </strong>*</p>
+
+<hr />
+
+<h2 id="u14">14: Using tab completion</h2>
+
+<p>Saving keystrokes may not seem important, but the longer that you spend typing in a terminal window, the happier you will be if you can reduce the time you spend at the keyboard. Especially, as prolonged typing is not good for your body. So the best Unix tip to learn early on is that you can <a href="http://en.wikipedia.org/wiki/Command_line_completion">tab complete</a> the names of files and programs on most Unix systems. Type enough letters that uniquely identify the name of a file, directory or program and press tab&#8230;Unix will do the rest. E.g. if you type &#8216;tou&#8217; and then press tab, Unix should autocomplete the word to &#8216;touch&#8217; (this is a command which we will learn more about in a minute). In this case, tab completion will occur because there are no other Unix commands that start with &#8216;tou&#8217;. If pressing tab doesn&#8217;t do anything, then you have not have typed enough unique characters. In this case pressing tab <em>twice</em> will show you all possible completions. This trick can save you a LOT of typing!</p>
+
+<p>Navigate to your home directory, and then use the <code>cd</code> command to change to the <code>Learning_unix</code> directory. Use tab completion to complete directory name. If there are no other directories starting with &#8216;L&#8217; in your home directory, then you should only need to type &#8216;cd&#8217; + &#8216;L&#8217; + &#8216;tab&#8217;.</p>
+
+<blockquote>
+<p><strong><em>Tab completion will make your life easier and make you more productive!</em></strong></p>
+</blockquote>
+
+<p>Another great time-saver is that Unix stores a list of all the commands that you have typed in each login session. You can access this list by using the <a href="http://en.wikipedia.org/wiki/History_(Unix)">history</a> command or more simply by using the up and down arrows to access anything from your history. So if you type a long command but make a mistake, press the up arrow and then you can use the left and right arrows to move the cursor in order to make a change.</p>
+
+<hr />
+
+<h2 id="u15">15: Creating empty files with the touch command</h2>
+
+<p>The following sections will deal with Unix commands that help us to work with files, i.e. copy files to/from places, move files, rename files, remove files, and most importantly, look at files. First, we need to have some files to play with. The Unix command <a href="http://en.wikipedia.org/wiki/Command_line_completion">touch</a> will let us create a new, empty file. The touch command does other things too, but for now we just want a couple of files to work with.</p>
+<pre><code class="bash">ubuntu@:~$ cd Learning_unix/
+ubuntu@:~/Learning_unix$ touch heaven.txt
+ubuntu@:~/Learning_unix$ touch earth.txt
+ubuntu@:~/Learning_unix$ ls
+earth.txt  heaven.txt</code></pre>
+
+<hr />
+
+<h2 id="u16">16: Moving files</h2>
+
+<p>Now, let&#8217;s assume that we want to move these files to a new directory (&#8216;Temp&#8217;). We will do this using the Unix <a href="http://en.wikipedia.org/wiki/Mv">mv</a> (move) command. Remember to use tab completion:</p>
+<pre><code class="bash">ubuntu@:~/Learning_unix$ mkdir Temp
+ubuntu@:~/Learning_unix$ mv heaven.txt Temp/
+ubuntu@:~/Learning_unix$ mv earth.txt Temp/
+ubuntu@:~/Learning_unix$ ls
+Temp
+ubuntu@:~/Learning_unix$ ls Temp/
+earth.txt  heaven.txt</code></pre>
+
+<p>For the <code>mv</code> command, we always have to specify a source file (or directory) that we want to move, and then specify a target location. If we had wanted to we could have moved both files in one go by typing any of the following commands:</p>
+<pre><code class="bash">mv *.txt Temp/ 
+mv *t Temp/ 
+mv *ea* Temp/</code></pre>
+
+<p>The asterisk <code>*</code> acts as a <a href="http://en.wikipedia.org/wiki/Wildcard_character">wild-card character</a>, essentially meaning &#8216;match anything&#8217;. The second example works because there are no other files or directories in the directory that end with the letters &#8216;t&#8217; (if there was, then they would be moved too). Likewise, the third example works because only those two files contain the letters &#8216;ea&#8217; in their names. Using wild-card characters can save you a lot of typing.</p>
+
+<p>The &#8216;?&#8217; character is also a wild-card but with a slightly different meaning. See if you can work out what it does.</p>
+
+<hr />
+
+<h2 id="u17">17: Renaming files</h2>
+
+<p>In the earlier example, the destination for the <code>mv</code> command was a directory name (Temp). So we moved a file from its source location to a target location, but note that the target could have also been a (different) file name, rather than a directory. E.g. let&#8217;s make a new file and move it whilst renaming it at the same time:</p>
+<pre><code class="bash">ubuntu@:~/Learning_unix$ touch rags
+ubuntu@:~/Learning_unix$ ls
+rags  Temp
+ubuntu@:~/Learning_unix$ mv rags Temp/riches
+ubuntu@:~/Learning_unix$ ls Temp/
+earth.txt  heaven.txt  riches</code></pre>
+
+<p>In this example we create a new file (&#8216;rags&#8217;) and move it to a new location and in the process change the name (to &#8216;riches&#8217;). So <code>mv</code> can rename a file as well as move it. The logical extension of this is using <code>mv</code> to rename a file without moving it (you have to use <code>mv</code> to do this as Unix does not have a separate &#8216;rename&#8217; command):</p>
+<pre><code class="bash">ubuntu@:~/Learning_unix$ mv Temp/riches Temp/rags</code></pre>
+
+<hr />
+
+<h2 id="u18">18: Moving directories</h2>
+
+<p>It is important to understand that as long as you have specified a &#8216;source&#8217; and a &#8216;target&#8217; location when you are moving a file, then it doesn&#8217;t matter what your <em>current</em> directory is. You can move or copy things within the same directory or between different directories regardless of whether you are in any of those directories. Moving directories is just like moving files:</p>
+<pre><code class="bash">ubuntu@:~/Learning_unix$ mv Temp/riches Temp/rags
+ubuntu@:~/Learning_unix$ mkdir Temp2
+ubuntu@:~/Learning_unix$ mv Temp2 Temp
+ubuntu@:~/Learning_unix$ ls Temp/
+earth.txt  heaven.txt  rags  Temp2</code></pre>
+
+<p>This step moves the Temp2 directory inside the Temp directory. Try creating a &#8216;Temp3&#8217; directory inside &#8216;Learning_unix&#8217; and then <code>cd</code> to <code>/tmp</code>. Can you move <code>Temp3</code> inside <code>Temp</code> without changing directory?</p>
+
+<hr />
+
+<h2 id="u19">19: Removing files</h2>
+
+<p>You&#8217;ve seen how to remove a directory with the <code>rmdir</code> command, but <code>rmdir</code> won&#8217;t remove directories if they contain any files. So how can we remove the files we have created (inside <code>Learning_Unix/Temp</code>)? In order to do this, we will have to use the <a href="http://en.wikipedia.org/wiki/Rm_(Unix)">rm</a> (remove) command.</p>
+
+<blockquote>
+<p><strong><em>Please read the next section VERY carefully. Misuse of the <code>rm</code> command can lead to needless death &amp; destruction</em></strong> </p>
+</blockquote>
+
+<p>Potentially, <code>rm</code> is a very dangerous command; if you delete something with <code>rm</code>, you will not get it back! It is possible to delete everything in your home directory (all directories and subdirectories) with <code>rm</code>, that is why it is such a dangerous command.</p>
+
+<p>Let me repeat that last part again. It is possible to delete EVERY file you have ever created with the <code>rm</code> command. Are you scared yet? You should be. Luckily there is a way of making <code>rm</code> a little bit safer. We can use it with the <code>-i</code> command-line option which will ask for confirmation before deleting anything (remember to use tab-completion):</p>
+<pre><code class="bash">ubuntu@:~/Learning_unix$ cd Temp
+ubuntu@:~/Learning_unix/Temp$ ls
+earth.txt  heaven.txt  rags  Temp2
+ubuntu@:~/Learning_unix/Temp$ rm -i earth.txt heaven.txt rags
+rm: remove regular empty file &lsquo;earth.txt&rsquo;? y
+rm: remove regular empty file &lsquo;heaven.txt&rsquo;? y
+rm: remove regular empty file &lsquo;rags&rsquo;? y
+ubuntu@:~/Learning_unix/Temp$ ls
+Temp2</code></pre>
+
+<p>We could have simplified this step by using a wild-card (e.g. <code>rm -i *.txt</code>) or we could have made things more complex by removing each file with a separate <code>rm</code> command. Let&#8217;s finish cleaning up:</p>
+<pre><code class="bash">rmdir Temp2/Temp3
+rmdir Temp2
+cd ..
+rmdir Temp</code></pre>
+
+<hr />
+
+<h2 id="u20">20: Copying files</h2>
+
+<p>Copying files with the <a href="http://en.wikipedia.org/wiki/Cp_(Unix)">cp</a> (copy) command is very similar to moving them. Remember to always specify a source and a target location. Let&#8217;s create a new file and make a copy of it:</p>
+<pre><code class="bash">ubuntu@:~/Learning_unix$ touch file1
+ubuntu@:~/Learning_unix$ cp file1 file2
+ubuntu@:~/Learning_unix$ ls
+file1  file2</code></pre>
+
+<p>What if we wanted to copy files from a different directory to our current directory? Let&#8217;s put a file in our home directory (specified by <code>~</code> remember) and copy it to the current directory (<code>Learning_unix</code>):</p>
+<pre><code class="bash">ubuntu@:~/Learning_unix$ touch ~/file3
+ubuntu@:~/Learning_unix$ ls ~
+command_line_course  file3  Learning_unix  linux_bootcamp
+ubuntu@:~/Learning_unix$ cp ~/file3 .
+ubuntu@:~/Learning_unix$ ls
+file1  file2  file3</code></pre>
+
+<p>This last step introduces another new concept. In Unix, the current directory can be represented by a <code>.</code> (dot) character. You will mostly use this only for copying files to the current directory that you are in. Compare the following:</p>
+<pre><code class="bash">ls 
+ls . 
+ls ./</code></pre>
+
+<p>In this case, using the dot is somewhat pointless because <code>ls</code> will already list the contents of the current directory by default. Also note how the trailing slash is optional. You can use <code>rm</code> to remove the temporary files.</p>
+
+<hr />
+
+<h2 id="u21">21: Copying directories</h2>
+
+<p>The <code>cp</code> command also allows us (with the use of a command-line option) to copy entire directories. Use <code>man cp</code> to see how the <code>-R</code> or <code>-r</code> options let you copy a directory <em>recursively</em>.</p>
+
+<hr />
+
+<h2 id="u22">22: Viewing files with less</h2>
+
+<p>So far we have covered listing the contents of directories and moving/copying/deleting either files and/or directories. Now we will quickly cover how you can look at files. The <a href="http://en.wikipedia.org/wiki/Less_(Unix)">less</a> command lets you view (but not edit) text files. We will use the <a href="http://en.wikipedia.org/wiki/Echo_(command)">echo</a> command to put some text in a file and then view it:</p>
+<pre><code class="bash">ubuntu@:~/Learning_unix$ echo &quot;Call me Ishmael.&quot;
+Call me Ishmael.
+ubuntu@:~/Learning_unix$ echo &quot;Call me Ishmael.&quot; &gt; opening_lines.txt
+ubuntu@:~/Learning_unix$ ls
+opening_lines.txt
+ubuntu@:~/Learning_unix$ less opening_lines.txt</code></pre>
+
+<p>On its own, <code>echo</code> isn&#8217;t a very exciting Unix command. It just echoes text back to the screen. But we can redirect that text into an output file by using the <code>&gt;</code> symbol. This allows for something called file <a href="http://en.wikipedia.org/wiki/Redirection_(Unix)">redirection</a>.</p>
+
+<blockquote>
+<p><strong><em>Careful when using file redirection (&gt;), it will overwrite any existing file of the same name</em></strong></p>
+</blockquote>
+
+<p>When you are using less, you can bring up a page of help commands by pressing <code>h</code>, scroll forward a page by pressing <code>space</code>, or go forward or backwards one line at a time by pressing <code>j</code> or <code>k</code>. To exit less, press <code>q</code> (for quit). The <code>less</code> program also does about a million other useful things (including text searching).</p>
+
+<hr />
+
+<h2 id="u23">23: Viewing files with cat</h2>
+
+<p>Let&#8217;s add another line to the file:</p>
+<pre><code class="bash">ubuntu@:~/Learning_unix$ echo &quot;The primroses were over.&quot; &gt;&gt; opening_lines.txt
+ubuntu@:~/Learning_unix$ cat opening_lines.txt
+Call me Ishmael.
+The primroses were over.</code></pre>
+
+<p>Notice that we use <code>&gt;&gt;</code> and not just <code>&gt;</code>. This operator will <strong>append</strong> to a file. If we only used <code>&gt;</code>, we would end up overwriting the file. The <a href="http://en.wikipedia.org/wiki/Cat_(Unix)">cat</a> command displays the contents of the file (or files) and then returns you to the command line. Unlike <code>less</code> you have no control on how you view that text (or what you do with it). It is a very simple, but sometimes useful, command. You can use <code>cat</code> to quickly combine multiple files or, if you wanted to, make a copy of an existing file:</p>
+<pre><code class="bash">cat opening_lines.txt &gt; file_copy.txt</code></pre>
+
+<hr />
+
+<h2 id="u24">24: Counting characters in a file</h2>
+<pre><code class="bash">ubuntu@:~/Learning_unix$ ls
+opening_lines.txt
+
+ubuntu@:~/Learning_unix$ ls -l
+total 4
+-rw-rw-r-- 1 ubuntu ubuntu 42 Jun 15 04:13 opening_lines.txt
+
+ubuntu@:~/Learning_unix$ wc opening_lines.txt
+ 2  7 42 opening_lines.txt
+
+ubuntu@:~/Learning_unix$ wc -l opening_lines.txt
+2 opening_lines.txt</code></pre>
+
+<p>The <code>ls -l</code> option shows us a long listing, which includes the size of the file in bytes (in this case &#8216;42&#8217;). Another way of finding this out is by using Unix&#8217;s <a href="https://en.wikipedia.org/wiki/Wc_(Unix)">wc</a> command (word count). By default this tells you many lines, words, and characters are in a specified file (or files), but you can use command-line options to give you just one of those statistics (in this case we count lines with <code>wc -l</code>).</p>
+
+<hr />
+
+<h2 id="u25">25: Editing small text files with nano</h2>
+
+<p>Nano is a lightweight editor installed on most Unix systems. There are many more powerful editors (such as &#8216;emacs&#8217; and &#8216;vi&#8217;), but these have steep learning curves. Nano is very simple. You can edit (or create) files by typing:</p>
+<pre><code class="bash">nano opening_lines.txt</code></pre>
+
+<p>You should see the following appear in your terminal:</p>
+
+<figure>
+<img src="http://korflab.ucdavis.edu/Unix_and_Perl/nano2.png" alt="" />
+</figure>
+
+<p>The bottom of the nano window shows you a list of simple commands which are all accessible by typing &#8216;Control&#8217; plus a letter. E.g. Control + X exits the program.</p>
+
+<hr />
+
+<h2 id="u26">26: The $PATH environment variable</h2>
+
+<p>One other use of the <code>echo</code> command is for displaying the contents of something known as <em>environment variables</em>. These contain user-specific or system-wide values that either reflect simple pieces of information (your username), or lists of useful locations on the file system. Some examples:</p>
+<pre><code class="bash">ubuntu@:~/Learning_unix$ echo $USER
+ubuntu
+ubuntu@:~/Learning_unix$ echo $HOME
+/home/ubuntu
+ubuntu@:~/Learning_unix$ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games</code></pre>
+
+<p>The last one shows the content of the <code>$PATH</code> environment variable, which displays a — colon separated — list of directories that are expected to contain programs that you can run. This includes all of the Unix commands that you have seen so far. These are files that live in directories which are run like programs (e.g. <code>ls</code> is just a special type of file in the <code>/bin</code> directory).</p>
+
+<p>Knowing how to change your $PATH to include custom directories can be necessary sometimes (e.g. if you install some new bioinformatics software in a non-standard location).</p>
+
+<hr />
+
+<h2 id="u27">27: Matching lines in files with grep</h2>
+
+<p>Use <code>nano</code> to add the following lines to <code>opening_lines.txt</code>:</p>
+
+<pre><code>Now is the winter of our discontent.  
+All children, except one, grow up.  
+The Galactic Empire was dying.  
+In a hole in the ground there lived a hobbit.  
+It was a pleasure to burn.  
+It was a bright, cold day in April, and the clocks were striking thirteen.  
+It was love at first sight.  
+I am an invisible man.  
+It was the day my grandmother exploded.  
+When he was nearly thirteen, my brother Jem got his arm badly broken at the elbow.  
+Marley was dead, to begin with.
+</code></pre>
+
+<p>You will often want to search files to find lines that match a certain pattern. The Unix command <a href="http://en.wikipedia.org/wiki/Grep">grep</a> does this (and much more). The following examples show how you can use grep&#8217;s command-line options to:</p>
+
+<ul>
+<li>show lines that match a specified pattern</li>
+<li>ignore case when matching (<code>-i</code>)</li>
+<li>only match whole words (<code>-w</code>)</li>
+<li>show lines that don&#8217;t match a pattern (<code>-v</code>)</li>
+<li>Use wildcard characters and other patterns to allow for alternatives (<code>*</code>, <code>.</code>, and <code>[]</code>)</li>
+</ul>
+<pre><code class="bash">grep was opening_lines.txt
+The Galactic Empire was dying.
+It was a pleasure to burn.
+It was a bright, cold day in April, and the clocks were striking thirteen.
+It was love at first sight.
+It was the day my grandmother exploded.
+When he was nearly thirteen, my brother Jem got his arm badly broken at the elbow.
+Marley was dead, to begin with.
+
+grep -v was opening_lines.txt
+Call me Ishmael.
+The primroses were over.
+Now is the winter of our discontent.
+All children, except one, grow up.
+In a hole in the ground there lived a hobbit.
+I am an invisible man.
+
+grep all opening_lines.txt
+Call me Ishmael.
+
+grep -i all opening_lines.txt
+Call me Ishmael.
+All children, except one, grow up.
+
+grep in opening_lines.txt
+Now is the winter of our discontent.
+The Galactic Empire was dying.
+In a hole in the ground there lived a hobbit.
+It was a bright, cold day in April, and the clocks were striking thirteen.
+I am an invisible man.
+Marley was dead, to begin with.
+
+grep -w in opening_lines.txt
+In a hole in the ground there lived a hobbit.
+It was a bright, cold day in April, and the clocks were striking thirteen.
+
+grep -w o.. opening_lines.txt
+Now is the winter of our discontent.
+All children, except one, grow up.
+
+grep [aeiou]t opening_lines.txt
+In a hole in the ground there lived a hobbit.
+It was love at first sight.
+It was the day my grandmother exploded.
+When he was nearly thirteen, my brother Jem got his arm badly broken at the elbow.
+Marley was dead, to begin with.
+
+grep -w -i [aeiou]t opening_lines.txt
+It was a pleasure to burn.
+It was a bright, cold day in April, and the clocks were striking thirteen.
+It was love at first sight.
+It was the day my grandmother exploded.
+When he was nearly thirteen, my brother Jem got his arm badly broken at the elbow.</code></pre>
+
+<hr />
+
+<h2 id="u28">28: Combining Unix commands with pipes</h2>
+
+<p>One of the most poweful features of Unix is that you can send the output from one command or program to any other command (as long as the second commmand accepts input of some sort). We do this by using what is known as a <a href="http://en.wikipedia.org/wiki/Pipe_(Unix)">pipe</a>. This is implemented using the &#8216;|&#8217; character (which is a character which always seems to be on different keys depending on the keyboard that you are using). Think of the pipe as simply connecting two Unix programs. Here&#8217;s an example which introduces some new Unix commands:</p>
+<pre><code class="bash">ubuntu@:~/Learning_unix$ grep was opening_lines.txt | wc -c
+316
+
+ubuntu@:~/Learning_unix$
+grep was opening_lines.txt | sort | head -n 3 | wc -c
+130</code></pre>
+
+<p>The first use of <code>grep</code> searches the specified file for lines matching &#8216;was&#8217;, it sends the lines that match through a pipe to the <code>wc</code> program. We use the <code>-c</code> option to just count characters in the matching lines (316).</p>
+
+<p>The second example first sends the output of <code>grep</code> to the Unix <code>sort</code> command. This sorts a file alphanumerically by default. The sorted output is sent to the <code>head</code> command which by default shows the first 10 lines of a file. We use the <code>-n</code> option of this command to only show 3 lines. These 3 lines are then sent to the <code>wc</code> command as before. </p>
+
+<blockquote>
+<p><strong><em>Whenever making a long pipe, test each step as you build it!</em></strong></p>
+</blockquote>
+
+<hr />
+
+<h1 id="miscellaneousunixpowercommands">Miscellaneous Unix power commands</h1>
+
+<p>The following examples introduce some other Unix commands, and show how they could be used to work on a fictional file called <code>file.txt</code>. Remember, you can always learn more about these Unix commands from their respective man pages with the <code>man</code> command. These are not all real world cases, but rather show the diversity of Unix command-line tools:</p>
+
+<ul>
+<li>View the penultimate 10 lines of a file (using <a href="http://en.wikipedia.org/wiki/Head_(Unix)">head</a> and <a href="http://en.wikipedia.org/wiki/Tail_(Unix)">tail</a> commands):</li>
+</ul>
+<pre><code class="bash">tail -n 20 file.txt | head</code></pre>
+
+<ul>
+<li>Show lines of a file that begin with a start codon (ATG) (the <code>^</code> matches patterns at the start of a line):</li>
+</ul>
+<pre><code class="bash">grep &quot;^ATG&quot; file.txt</code></pre>
+
+<ul>
+<li>Cut out the 3rd column of a tab-delimited text file and sort it to only show unique lines (i.e. remove duplicates):</li>
+</ul>
+<pre><code class="bash">cut -f 3 file.txt | sort -u</code></pre>
+
+<ul>
+<li>Count how many lines in a file contain the words &#8216;cat&#8217; or &#8216;bat&#8217; (<code>-c</code> option of <code>grep</code> counts lines):</li>
+</ul>
+<pre><code class="bash">grep -c &apos;[bc]at&apos; file.txt</code></pre>
+
+<ul>
+<li>Turn lower-case text into upper-case (using <a href="http://en.wikipedia.org/wiki/Tr_(Unix)">tr</a> command to &#8216;transliterate&#8217;):</li>
+</ul>
+<pre><code class="bash">cat file.txt | tr &apos;a-z&apos; &apos;A-Z&apos;</code></pre>
+
+<ul>
+<li>Change all occurences of &#8216;Chr1&#8217; to &#8216;Chromosome 1&#8217; and write changed output to a new file (using <a href="http://en.wikipedia.org/wiki/Sed">sed</a> command):</li>
+</ul>
+<pre><code class="bash">cat file.txt | sed &apos;s/Chr1/Chromosome 1/&apos; &gt; file2.txt</code></pre>
+
+<hr />
+
+<h2 id="versionhistory">Version history</h2>
+
+<p>2015&#8211;06&#8211;14 - Version 1.0, adapted from Unix and Perl for Biologists Primer<br/>
+2015&#8211;06&#8211;24 - Version 1.01: clarified that this material is assuming user name is &#8217;ubuntu&#8217;and made other minor clarifications (such as what this material was first produced for).<br/>
+2015&#8211;12&#8211;03 - Version 1.02: changed license to CC BY (from CC BY-NC-SA)</p>
+<!-- ##END MARKED WRAPPER## -->
+    </div>
+</body>
+</html>
